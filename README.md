@@ -32,3 +32,6 @@ Streamlit ile oluşturulan kullanıcı arayüzünde kullanıcılar:
 ### Başlatmak için:
 ```bash
 streamlit run app.py
+
+#Kaggle link :
+https://www.kaggle.com/code/kardelen90/heart-failure-prediction
