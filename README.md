@@ -1,37 +1,29 @@
-# Heart-Failure-Prediction
+# Kalp Hastalığı Tahmini
 
-Bu proje, sağlık verilerine dayanarak kalp hastalığı riskini tahmin etmek amacıyla geliştirilmiştir. Kullanıcıdan alınan bilgilerle makine öğrenmesi modeli, kalp hastalığı olasılığını % olarak tahmin eder.
+Bu proje, Makine Öğrenmesi Bootcamp kapsamında gerçekleştirdiğim bir çalışmadır. Amacım, çeşitli sağlık verilerine bakarak bir bireyin kalp hastalığı riski taşıyıp taşımadığını tahmin eden bir model geliştirmekti.
 
-## 📊 Kullanılan Veri Seti
-- Kaynak: Kaggle
-- Kayıt sayısı: 918
-- Özellik sayısı: 12 (yaş, cinsiyet, kolesterol, EKG sonuçları vb.)
+## Kullandığım Veri Seti
 
-## 🔍 Kullanılan Yöntemler
-- Exploratory Data Analysis (EDA)
-- Veri Ön İşleme
-- One-Hot Encoding
-- Modelleme: 
-  - Logistic Regression
-  - Random Forest (final model)
-- Model Değerlendirme:
-  - Accuracy
-  - ROC AUC
-  - Confusion Matrix
+- Veri adı: heart.csv
+- Satır sayısı: 918
+- Sütunlar: yaş, cinsiyet, göğüs ağrısı tipi, kolesterol, EKG, maksimum nabız gibi sağlıkla ilgili bilgiler
+- Hedef değişken: `HeartDisease` (0: sağlıklı, 1: hastalık var)
 
-## 🧠 En Başarılı Model
-- 🎯 Random Forest (max_depth=5, n_estimators=50)
-- Accuracy: %87
-- ROC AUC: 0.86
+##  Neler Yaptım?
 
-## 🖥️ Web Arayüz (Streamlit)
-Streamlit ile oluşturulan kullanıcı arayüzünde kullanıcılar:
-- Yaş, cinsiyet, kolesterol vb. bilgileri girerek
-- Anlık kalp hastalığı riski tahmini alabilir
+1. Veriyi inceledim, eksik değer kontrolü ve sınıf dağılımı yaptım
+2. Sayısal değişkenler arasında korelasyonlara baktım
+3. Kategorik değişkenleri `get_dummies` ile sayısala çevirdim
+4. `StandardScaler` ile veriyi ölçeklendirdim
+5. Veriyi eğitim ve test olarak ayırdım (%80/%20)
+6. Logistic Regression ve Random Forest ile modeller kurdum
+7. Modelleri karşılaştırıp en iyi sonucu Random Forest verdi
+8. GridSearchCV ile en iyi parametreleri buldum
 
-### Başlatmak için:
+##  Web Uygulaması (Streamlit)
+
+Streamlit kullanarak kullanıcıdan yaş, kolesterol, EKG gibi bilgileri alıp tahmin yapan basit bir arayüz geliştirdim. Modelin eğitildiği özelliklerle aynı yapıda olacak şekilde verileri dönüştürüp sonuçları ekrana yazdırdım.
+
+Uygulamayı başlatmak için:
 ```bash
 streamlit run app.py
-
-#Kaggle link :
-https://www.kaggle.com/code/kardelen90/heart-failure-prediction
